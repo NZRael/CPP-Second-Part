@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:57:56 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/23 12:28:58 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:25:35 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 #define RESET "\033[39m"
 #define BLACK "\033[30m"
@@ -24,6 +25,8 @@
 #define YELLOW "\033[33m"
 #define BLUE "\033[94m"
 #define MAGENTA "\033[35m"
+
+class Form;
 
 class Bureaucrat
 {
@@ -42,6 +45,8 @@ public:
 
 	void	incGrade();
 	void	decGrade();
+
+	void	signForm(Form formu) const;
 
 	class	GradeTooHighException : public std::exception {
 		public:

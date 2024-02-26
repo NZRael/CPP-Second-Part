@@ -6,20 +6,33 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:38:03 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/23 15:35:18 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:25:21 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
+
+#define RESET "\033[39m"
+#define BLACK "\033[30m"
+#define GREY "\033[90m"
+#define RED "\033[31m"
+#define CYAN "\033[36m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[94m"
+#define MAGENTA "\033[35m"
+
+class Bureaucrat;
 
 class Form
 {
 private:
 	const std::string	_name;
-	bool				_sign{false};
+	bool				_sign;
 	const int			_grade_signed;
 	const int			_grade_exec;	
 public:
@@ -33,6 +46,8 @@ public:
 	bool		getSign() const;
 	int			getGradeSigned() const;
 	int			getGradeExec() const;
+
+	void	beSigned(Bureaucrat bur);
 
 	class	GradeTooHighException : public std::exception {
 		public:

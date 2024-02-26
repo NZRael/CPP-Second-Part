@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:11:37 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/23 15:41:59 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:52:13 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ int main(void) {
 	
 	Bureaucrat abby("Abby", 75);
 	
-	Form state_form("State form", 75, 150);
-	Form presidential_form("Presidential form", 74, 150);
+	Form state("State", 75, 150);
+	Form presidential_form("Presidential", 74, 150);
 	// show copy
-	Form kuala_lumpur(state_form);
+	Form kuala_lumpur(state);
 	Form united_states(presidential_form);
 
 	std::cout << std::endl << YELLOW << "----- FORM STATUSES w COPIED -----" << std::endl << std::endl;
-	std::cout << state_form << std::endl;
+	std::cout << state << std::endl;
 	std::cout << presidential_form << std::endl;
 	std::cout << kuala_lumpur << std::endl;
 	std::cout << united_states << std::endl;
 
 	std::cout << std::endl;
 	
-	abby.signForm(state_form);
+	abby.signForm(state);
 	abby.signForm(presidential_form);
 
 	std::cout << std::endl << MAGENTA << "----- FORM STATUSES w COPIED -----" << std::endl << std::endl;
 	// shows that the forms are deep copies
-	std::cout << state_form << std::endl;
+	std::cout << state << std::endl;
 	std::cout << presidential_form << std::endl;
 	std::cout << kuala_lumpur << std::endl;
 	std::cout << united_states << std::endl;
@@ -79,7 +79,7 @@ int main(void) {
 	}
 
 	std::cout << std::endl << GREEN << "----- FROM STATUSES -----" << std::endl << std::endl;
-	std::cout << state_form << std::endl
+	std::cout << state << std::endl
 		<< presidential_form << std::endl
 		<< kuala_lumpur << std::endl
 		<< united_states << std::endl;

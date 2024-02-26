@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:57:54 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/23 15:16:35 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:50:11 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 	this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat & cpy) {
+Bureaucrat::Bureaucrat(const Bureaucrat & cpy) : _name(cpy._name), _grade(cpy._grade) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
-	*this = cpy;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat & rhs){
@@ -57,6 +56,15 @@ void	Bureaucrat::decGrade(){
 	if (this->_grade == 150) throw GradeTooLowException();
 	this->_grade++;
 	std::cout << this->_name << " deacreased grade by 1, now grade is " << this->_grade << std::endl;
+}
+
+///////FORM FUNCTION////////
+
+void	Bureaucrat::signForm(Form formu) const{
+	if (formu.getSign() == true)
+		std::cout << this->_name << " signed " << formu.getName() << std::endl;
+	else
+		std::cout << this->_name << " couldn't sign " << formu.getName() << " because some reason ..." << std::endl;
 }
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw(){

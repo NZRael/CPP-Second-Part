@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:38:03 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/26 16:25:21 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/27 10:02:49 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ public:
 	int			getGradeSigned() const;
 	int			getGradeExec() const;
 
-	void	beSigned(Bureaucrat bur);
+	void	beSigned(const Bureaucrat &bur);
 
 	class	GradeTooHighException : public std::exception {
 		public:

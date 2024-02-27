@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:57:54 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:11 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/27 10:36:31 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,14 @@ void	Bureaucrat::decGrade(){
 
 ///////FORM FUNCTION////////
 
-void	Bureaucrat::signForm(Form formu) const{
-	if (formu.getSign() == true)
+void	Bureaucrat::signForm(Form &formu) const{
+	try{
+		formu.beSigned(*this);
 		std::cout << this->_name << " signed " << formu.getName() << std::endl;
-	else
-		std::cout << this->_name << " couldn't sign " << formu.getName() << " because some reason ..." << std::endl;
+	}
+	catch (std::exception &e){
+		std::cout << this->_name << " couldn't sign " << formu.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw(){

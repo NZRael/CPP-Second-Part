@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:57:56 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/26 16:25:35 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/27 10:17:56 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ public:
 	void	incGrade();
 	void	decGrade();
 
-	void	signForm(Form formu) const;
+	void	signForm(Form &formu) const;
 
 	class	GradeTooHighException : public std::exception {
 		public:

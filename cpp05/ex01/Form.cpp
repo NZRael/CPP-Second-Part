@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:53:04 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/26 16:47:54 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/02/27 10:42:04 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ Form::Form() : _name("Form Default"), _sign(false), _grade_signed(150), _grade_e
 
 Form::Form(const std::string &name, int grade_signed, int grade_exec) : _name(name), _sign(false), _grade_signed(grade_signed), _grade_exec(grade_exec){
 	std::cout << "Form surcharged constructor called" << std::endl;
-	if (this->_grade_signed < 1 || this->_grade_exec < 1) throw GradeTooHighException();
-	if (this->_grade_signed > 150 || this->_grade_exec > 150) throw GradeTooLowException();
+	if (this->_grade_signed < 1 || this->_grade_exec < 1) throw Form::GradeTooHighException();
+	if (this->_grade_signed > 150 || this->_grade_exec > 150) throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form & cpy) : _name(cpy._name), _grade_signed(cpy._grade_signed), _grade_exec(cpy._grade_exec) {
 	std::cout << "Form copy constructor called" << std::endl;
-	*this = cpy;
 }
 
 Form &Form::operator=(const Form & rhs){
@@ -54,17 +53,18 @@ int	Form::getGradeExec() const{
 	return (this->_grade_exec);
 }
 
-void	Form::beSigned(Bureaucrat bur){
-	if (bur.getGrade() > this->_grade_signed) throw GradeTooLowException();
+void	Form::beSigned(const Bureaucrat &bur){
+	if (bur.getGrade() > this->_grade_signed)
+		throw GradeTooLowException();
 	this->_sign = true;
 }
 
 const char	*Form::GradeTooHighException::what() const throw(){
-	return ("Error : Form Grade cannot be higher than 1.");
+	return ("Form Grade too high.");
 }
 
 const char	*Form::GradeTooLowException::what() const throw(){
-	return ("Error : Form Grade cannot be lower than 150.");
+	return ("Form Grade too low.");
 }
 
 std::ostream	&operator<<(std::ostream &o, const Form & form){

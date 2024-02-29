@@ -6,7 +6,7 @@ CC = c++
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-NAME = bureaucrat
+NAME = converter
 
 all: $(NAME)
 

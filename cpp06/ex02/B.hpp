@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 12:43:42 by sboetti           #+#    #+#             */
-/*   Updated: 2024/03/05 13:48:16 by sboetti          ###   ########.fr       */
+/*   Created: 2024/03/12 12:24:07 by sboetti           #+#    #+#             */
+/*   Updated: 2024/03/12 12:24:11 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
-int	main(int argc, char **argv){
-	if (argc != 2)
-	{
-		std::cout << "Usage: ./convert [input]" << std::endl;
-		return (1);
-	}
-	ScalarConverter::convert(argv[1]);
-	return (0);
-}
+#include "Base.hpp"
+
+class B: public Base{};

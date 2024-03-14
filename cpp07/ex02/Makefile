@@ -1,12 +1,11 @@
-SRC = main.cpp \
-		ScalarConverter.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-NAME = converter
+NAME = array
 
 all: $(NAME)
 

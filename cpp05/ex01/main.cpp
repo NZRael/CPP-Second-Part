@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:11:37 by sboetti           #+#    #+#             */
-/*   Updated: 2024/04/19 15:04:57 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:15:51 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void) {
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	
-	std::cout << std::endl << GREEN << "----- TESTS TO SIGN FORMS -----" << std::endl << std::endl;
+	std::cout << std::endl << GREEN << "----- TESTS TO SIGN FORMS -----" << RESET << std::endl << std::endl;
 	
 	Bureaucrat abby("Abby", 75);
 	
@@ -39,7 +39,7 @@ int main(void) {
 	Form kuala_lumpur(state);
 	Form united_states(presidential_form);
 
-	std::cout << std::endl << YELLOW << "----- FORM STATUSES w COPIED -----" << std::endl << std::endl;
+	std::cout << std::endl << YELLOW << "----- FORM STATUSES w COPIED -----" << RESET << std::endl << std::endl;
 	std::cout << state << std::endl;
 	std::cout << presidential_form << std::endl;
 
@@ -51,7 +51,7 @@ int main(void) {
 	abby.signForm(state);
 	abby.signForm(presidential_form);
 
-	std::cout << std::endl << MAGENTA << "----- FORM STATUSES w DEEP COPIED -----" << std::endl << std::endl;
+	std::cout << std::endl << MAGENTA << "----- FORM STATUSES w DEEP COPIED -----" << RESET << std::endl << std::endl;
 
 	std::cout << state << std::endl;
 	std::cout << presidential_form << std::endl;
@@ -61,7 +61,7 @@ int main(void) {
 	std::cout << kuala_lumpur << std::endl;
 	std::cout << united_states << std::endl;
 	
-	std::cout << std::endl << GREEN << "----- PROMOTE ABBY TRY AGAIN -----" << std::endl << std::endl;
+	std::cout << std::endl << GREEN << "----- PROMOTE ABBY TRY AGAIN -----" << RESET << std::endl << std::endl;
 	abby.incGrade();
 
 	try {
@@ -81,7 +81,7 @@ int main(void) {
 		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
-	std::cout << std::endl << GREEN << "----- FROM STATUSES -----" << std::endl << std::endl;
+	std::cout << std::endl << GREEN << "----- FROM STATUSES -----" << RESET << std::endl << std::endl;
 	std::cout << state << std::endl
 		<< presidential_form << std::endl
 		<< kuala_lumpur << std::endl

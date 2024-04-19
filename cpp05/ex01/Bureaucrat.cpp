@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:57:54 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/27 10:36:31 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:55:41 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	Bureaucrat::decGrade(){
 
 void	Bureaucrat::signForm(Form &formu) const{
 	try{
+		if (formu.getSign() == true)
+			throw std::runtime_error("Form already signed.");
 		formu.beSigned(*this);
 		std::cout << this->_name << " signed " << formu.getName() << std::endl;
 	}

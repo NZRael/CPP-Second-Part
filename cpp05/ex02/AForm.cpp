@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:53:04 by sboetti           #+#    #+#             */
-/*   Updated: 2024/04/19 15:06:03 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 16:18:14 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ AForm::AForm(const std::string &name, int grade_signed, int grade_exec) : _name(
 	if (this->_grade_signed > 150 || this->_grade_exec > 150) throw GradeTooLowException();
 }
 
-AForm::AForm(const AForm & cpy) : _name(cpy._name), _grade_signed(cpy._grade_signed), _grade_exec(cpy._grade_exec) {
+AForm::AForm(const AForm & cpy) : _name(cpy._name), _sign(cpy._sign), _grade_signed(cpy._grade_signed), _grade_exec(cpy._grade_exec) {
 	std::cout << "AForm copy constructor called" << std::endl;
 }
 
@@ -54,11 +54,10 @@ int	AForm::getGradeExec() const{
 }
 
 void	AForm::beSigned(const Bureaucrat &bur){
-	if (this->_sign == true)
-		throw std::runtime_error("Form already signed.");
 	if (bur.getGrade() > this->_grade_signed)
 		throw GradeTooLowException();
-	this->_sign = true;
+	if (this->_sign != true)
+		this->_sign = true;
 }
 
 void AForm::execute(const Bureaucrat &executor) const

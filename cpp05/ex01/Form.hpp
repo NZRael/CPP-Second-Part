@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:38:03 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/27 10:02:49 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:37:17 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ public:
 	Form & operator=(const Form & rhs);
 	~Form();
 
-	std::string	getName() const;
+	std::string const	&getName() const;
 	bool		getSign() const;
-	int			getGradeSigned() const;
-	int			getGradeExec() const;
+	int	const		&getGradeSigned() const;
+	int	const		&getGradeExec() const;
 
 	void	beSigned(const Bureaucrat &bur);
 

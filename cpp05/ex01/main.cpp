@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:11:37 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/27 11:16:48 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:04:57 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 #include "Form.hpp"
 
 int main(void) {
-	std::cout << RED << "----- TESTS INVALID FORM CREATION-----" << std::endl << std::endl;
+	std::cout << RED << "----- TESTS INVALID FORM CREATION-----" << RESET << std::endl << std::endl;
 	try {
 		Form f1("Something", 1, 0);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	try {
 		Form f2("Something", 1, 151);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	
 	std::cout << std::endl << GREEN << "----- TESTS TO SIGN FORMS -----" << std::endl << std::endl;
@@ -63,14 +63,14 @@ int main(void) {
 	
 	std::cout << std::endl << GREEN << "----- PROMOTE ABBY TRY AGAIN -----" << std::endl << std::endl;
 	abby.incGrade();
-	
+
 	try {
 		presidential_form.beSigned(abby);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
-	
+
 	abby.signForm(kuala_lumpur);
 	abby.signForm(united_states);
 
@@ -78,7 +78,7 @@ int main(void) {
 		united_states.beSigned(abby);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 
 	std::cout << std::endl << GREEN << "----- FROM STATUSES -----" << std::endl << std::endl;

@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:53:04 by sboetti           #+#    #+#             */
-/*   Updated: 2024/02/28 12:16:33 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:06:03 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	AForm::getGradeExec() const{
 }
 
 void	AForm::beSigned(const Bureaucrat &bur){
+	if (this->_sign == true)
+		throw std::runtime_error("Form already signed.");
 	if (bur.getGrade() > this->_grade_signed)
 		throw GradeTooLowException();
 	this->_sign = true;

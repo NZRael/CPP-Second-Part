@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:28:08 by sboetti           #+#    #+#             */
-/*   Updated: 2024/03/06 17:38:15 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:50:03 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,11 +184,11 @@ bool	ScalarConverter::checkDecimal(const std::string &str, int end){
 	}
 	if (count == 0 && end == 0)
 		return false;
-	if (count == 1 && end == 1)
+	if (count == 1 && end == 1 && pos != (str.length() - end - 1))
 		return true;
 	if (count > 1 && end == 1)
 		return false;
-	if (count == 1 && pos == str.length() - 1)
+	if (count == 1 && pos == (str.length() - end - 1))
 		return false;
 	return true;
 }

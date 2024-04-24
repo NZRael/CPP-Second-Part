@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:28:08 by sboetti           #+#    #+#             */
-/*   Updated: 2024/04/23 13:50:03 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/24 14:53:20 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	ScalarConverter::convertDouble(const std::string &str){
 	char	*endPTR;
 	double	d = std::strtod(str.c_str(), &endPTR);
 
+	std::cout << d << std::endl;
 	if (d < 0 || d > 127) {
 		std::cout << "char: impossible" << std::endl;
 	}

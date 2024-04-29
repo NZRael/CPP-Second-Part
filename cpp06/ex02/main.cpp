@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:51:40 by sboetti           #+#    #+#             */
-/*   Updated: 2024/03/12 16:01:44 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/29 16:20:19 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,29 @@ void	identify(Base *p){
 }
 
 void	identify(Base &p){
-	if (dynamic_cast<A*>(&p) != 0) {
-		std::cout << "Type: A" << std::endl;
-	} else if (dynamic_cast<B*>(&p) != 0) {
-		std::cout << "Type: B" << std::endl;
-	} else if (dynamic_cast<C*>(&p) != 0) {
-		std::cout << "Type: C" << std::endl;
-	} else {
-		std::cout << "Unknown type" << std::endl;
+	try{
+		if (dynamic_cast<A*>(&p) != 0) {
+			std::cout << "Type: A" << std::endl;
+		} else if (dynamic_cast<B*>(&p) != 0) {
+			std::cout << "Type: B" << std::endl;
+		} else if (dynamic_cast<C*>(&p) != 0) {
+			std::cout << "Type: C" << std::endl;
+		}
+	}
+	catch (std::exception &e) {
+		std::cout << "Unknown type" << e.what() << std::endl;
 	}
 }
 
 int main() {
-	A objA;
-	B objB;
-	C objC;
+	Base	*base;
 
-	identify(objA); // Affichera "Type: A"
-	identify(objB); // Affichera "Type: B"
-	identify(objC); // Affichera "Type: C"
+	std::cout << "RUNNING SUBJECT TESTS" << std::endl;
+	base = generate();
+	identify(base);
+	identify(*base);
+	delete base;
 
-	std::cout << std::endl;
-
-	Base* obA = new A();
-	Base* obB = new B();
-	Base* obC = new C();
-
-	identify(obA); // Affichera "Type: A"
-	identify(obB); // Affichera "Type: B"
-	identify(obC); // Affichera "Type: C"
-
-	delete obA;
-	delete obB;
-	delete obC;
-
+	std::cout << "All tests completed" << std::endl;
 	return 0;
 }

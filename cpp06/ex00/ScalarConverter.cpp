@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:28:08 by sboetti           #+#    #+#             */
-/*   Updated: 2024/04/24 14:53:20 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/04/29 13:22:14 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ bool	ScalarConverter::checkDecimal(const std::string &str, int end){
 Strtype	ScalarConverter::checkType(const std::string &str){
 	if (str.empty())
 		return NO_TYPE;
-	if (str.length() == 1 && std::isalpha(str[0]))
+	if (str.length() == 1 && std::isprint(str[0]))
 		return CHAR_TYPE;
 	if (str == "-inff" || str == "+inff" || str == "nanf"
 	|| str == "-inf" || str == "+inf" || str == "nan")

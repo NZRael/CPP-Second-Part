@@ -10,8 +10,7 @@
 #define CRESET	"\033[0m"
 
 void	testSubject(void) {
-	std::cout << BWHT "\n>>> RUNNING SUBJECT TESTS\n" CRESET << std::endl;
-	/* Subject test */
+	std::cout << BWHT ">>> RUNNING SUBJECT TESTS" CRESET << std::endl;
 	MutantStack<int>	mstack;
 
 	mstack.push(5);
@@ -39,8 +38,7 @@ void	testSubject(void) {
 }
 
 void	runListIteration(void) {
-	std::cout << BWHT "\n>>> LIST ITERATION\n" CRESET << std::endl;
-	/* List test for comparison */
+	std::cout << BWHT ">>> LIST ITERATION" CRESET << std::endl;
 	std::list<int>	list;
 
 	list.push_back(5);

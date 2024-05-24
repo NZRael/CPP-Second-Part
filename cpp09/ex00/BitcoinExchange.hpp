@@ -12,14 +12,16 @@ class BitcoinExchange{
 		std::map<std::string, float>	_data;
 
 		int		ft_stoi(std::string str);
+		float	ft_stof(std::string str);
 		bool	validDate(std::string date, std::string line);
-		bool	validValue(std::string value);
-		void	printExchange(char *file_name);
+		bool	validValue(std::string value, std::string line);
+		float	exchangeRate(std::string date);
 	public:
 		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const & src);
 		BitcoinExchange & operator=(BitcoinExchange const & src);
 		~BitcoinExchange();
 
-		void	init_all(char *file_name);
+		void	printExchange(char *file_name);
+		void	init_data(std::string filename);
 };

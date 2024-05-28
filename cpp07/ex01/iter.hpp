@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:22:45 by sboetti           #+#    #+#             */
-/*   Updated: 2024/03/14 14:11:41 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/05/27 13:12:49 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	doubleValue(T& value) {
 
 template <typename T>
 void	addOne(T& value) {
-	value += 1.0;
+	value += 1;
 }

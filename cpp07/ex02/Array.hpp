@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:14:59 by sboetti           #+#    #+#             */
-/*   Updated: 2024/03/14 12:56:42 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/05/27 14:37:09 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ private:
 	unsigned int _size;
 
 public:
-	Array() : elements(0), _size(0) {}
+	Array() : _size(0) {
+		elements = new T[_size];
+	}
 
 	Array(unsigned int n) : _size(n) {
 		elements = new T[_size];

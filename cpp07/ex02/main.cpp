@@ -6,7 +6,7 @@
 /*   By: sboetti <sboetti@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:15:01 by sboetti           #+#    #+#             */
-/*   Updated: 2024/05/27 14:36:34 by sboetti          ###   ########.fr       */
+/*   Updated: 2024/05/28 11:59:02 by sboetti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main() {
 			arr2[i] = i + 1;
 
 		// Test de la copie d'array 2
-		Array<int> arr3(arr2);// = arr2;
+		Array<int> arr3(arr2);//= arr2;
 		std::cout << "Array3 size: " << arr3.size() << std::endl;
 		std::cout << "Array3 elements: ";
 		for (unsigned int i = 0; i < arr3.size(); ++i)

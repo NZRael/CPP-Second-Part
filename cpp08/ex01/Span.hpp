@@ -32,4 +32,5 @@ class Span{
 		void	addNumber(int nb);
 		void	shortestSpan();
 		void	longestSpan();
+		void	betterAddNumber(std::list<int>::iterator begin, std::list<int>::iterator end);
 };

@@ -8,9 +8,9 @@ Span::Span(const Span &cpy) : _n(cpy._n), _tab(cpy._tab) {}
 
 Span &Span::operator=(const Span &rhs) {
 	if (this != &rhs) {
-		_n = rhs._n;
+		this->_n = rhs._n;
 		if (this->_n > 0)
-			_tab = rhs._tab;
+			this->_tab = rhs._tab;
 	}
 	return *this;
 }
@@ -18,12 +18,11 @@ Span &Span::operator=(const Span &rhs) {
 Span::~Span() {}
 
 void	Span::addNumber(int nb){
-	std::list<int>::iterator it;
-
 	if (this->_n < 1)
 		throw std::runtime_error("Nothing to turn in your list");
 	if (this->_tab.size() >= this->_n)
 		throw std::runtime_error("List is full");
+	std::list<int>::iterator it;
 	for (it = this->_tab.begin(); it != this->_tab.end(); it++) {
 			if (*it == nb)
 				throw std::runtime_error("Duplicated value");
@@ -42,7 +41,7 @@ void	Span::shortestSpan(){
 	int prevVal = *it;
 	++it;
 	for (; it != sortedTab.end(); ++it) {
-		int currentVal = *it;
+		int currentVal = *it; 
 		int diff = currentVal - prevVal;
 		if (diff < shortest) {
 			shortest = diff;
@@ -62,4 +61,14 @@ void	Span::longestSpan(){
 	int maxVal = sortedTab.back();
 	int longest = maxVal - minVal;
 	std::cout << GREEN << "Longest span in list is : " << longest << RESET << std::endl;
+}
+
+void	Span::betterAddNumber(std::list<int>::iterator begin, std::list<int>::iterator end){
+	if (this->_n < 1)
+		throw std::runtime_error("Nothing to turn in your list");
+	if (this->_tab.size() >= this->_n)
+		throw std::runtime_error("List is full");
+	if (std::distance(begin, end) + this->_tab.size() > this->_n)
+        throw std::runtime_error("Not enough space to add all elements");
+	this->_tab.insert(this->_tab.end(), begin, end);
 }

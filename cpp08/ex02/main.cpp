@@ -1,24 +1,15 @@
 #include "MutantStack.hpp"
 
-#define BRED	"\033[1;31m"
-#define BGRN	"\033[1;32m"
-#define BYEL	"\033[1;33m"
-#define BBLU	"\033[1;34m"
-#define BMAG	"\033[1;35m"
-#define BCYN	"\033[1;36m"
-#define BWHT	"\033[1;37m"
-#define CRESET	"\033[0m"
-
 void	testSubject(void) {
-	std::cout << BWHT ">>> RUNNING SUBJECT TESTS" CRESET << std::endl;
+	std::cout << BWHT "---- RUNNING SUBJECT TESTS" CRESET << std::endl;
 	MutantStack<int>	mstack;
 
 	mstack.push(5);
 	mstack.push(17);
 
-	std::cout << BCYN << mstack.top() << CRESET << std::endl;
+	std::cout << BCYN << "top => " << mstack.top() << CRESET << std::endl;
 	mstack.pop();
-	std::cout << BCYN << mstack.size() << CRESET << std::endl;
+	std::cout << BCYN << "size => " << mstack.size() << CRESET << std::endl;
 	
 	mstack.push(3);
 	mstack.push(5);
@@ -38,15 +29,15 @@ void	testSubject(void) {
 }
 
 void	runListIteration(void) {
-	std::cout << BWHT ">>> LIST ITERATION" CRESET << std::endl;
+	std::cout << BWHT "---- LIST ITERATION" CRESET << std::endl;
 	std::list<int>	list;
 
 	list.push_back(5);
 	list.push_back(17);
 
-	std::cout << BCYN << list.back() << CRESET << std::endl;
+	std::cout << BCYN << "back => " << list.back() << CRESET << std::endl;
 	list.pop_back();
-	std::cout << BCYN << list.size() << CRESET << std::endl;
+	std::cout << BCYN << "size => " << list.size() << CRESET << std::endl;
 
 	list.push_back(3);
 	list.push_back(5);
@@ -62,7 +53,6 @@ void	runListIteration(void) {
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::list<int>	l(list);
 }
 
 int	main(void) {

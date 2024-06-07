@@ -2,9 +2,7 @@
 
 #include <iostream>
 #include <stack>
-#include <iterator>
-#include <cctype>
 #include <sstream>
-#include <limits>
+#include <climits>
 
 bool	check_expression(std::string str);

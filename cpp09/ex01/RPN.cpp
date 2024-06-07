@@ -38,7 +38,6 @@ bool	check_expression(std::string str){
 					}
 					expression.push(b / a);
 				}
-
 			}
 		}
 		else
@@ -46,7 +45,7 @@ bool	check_expression(std::string str){
 	}
 	if (expression.size() != 1)
 		return false;
-	if (expression.top() > __LONG_LONG_MAX__ || expression.top() < -__LONG_LONG_MAX__)
+	if (expression.top() > INT_MAX || expression.top() < INT_MIN)
 		return false;
 	std::cout << expression.top() << std::endl;
 	return true;

@@ -61,31 +61,35 @@ void	PmergeMe::fordJohnsonSort(Container& container){
 		container.pop_back();
 		size--;
 	}
+	// Mettre les valeures rangee par paire dans un vecteur de pairs
 	std::vector<std::pair<int, int> > vecpairs;
 	for (size_t i = 0; i < size; i += 2)
 		vecpairs.push_back(std::make_pair(container[i], container[i + 1]));
+	// Trier les deux valeures de chaque pair
 	for (size_t i = 0; i < vecpairs.size(); i++){
 		if (vecpairs[i].first > vecpairs[i].second)
 			std::swap(vecpairs[i].first, vecpairs[i].second);
 	}
-	///////////////AFFICHAGE
-	std::cout << "Pairs after sort in them" << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it_pair = vecpairs.begin(); it_pair != vecpairs.end(); it_pair++)
-		std::cout << "[" << it_pair->first << " " << it_pair->second << "] ";
-	std::cout << std::endl;
-	////////////////////////
+	// ///////////////AFFICHAGE
+	// std::cout << "Pairs after sort in them" << std::endl;
+	// for (std::vector<std::pair<int, int> >::iterator it_pair = vecpairs.begin(); it_pair != vecpairs.end(); it_pair++)
+	// 	std::cout << "[" << it_pair->first << " " << it_pair->second << "] ";
+	// std::cout << std::endl;
+	// ////////////////////////
+	// Trier les pairs par rapport a la deuxieme valeur
 	for (size_t i = 0; i < vecpairs.size(); i++){
 		for (size_t j = i + 1; j < vecpairs.size(); j++){
 			if (vecpairs[i].second > vecpairs[j].second)
 				std::swap(vecpairs[i], vecpairs[j]);
 		}
 	}
-	///////////////AFFICHAGE
-	std::cout << "Sort Pairs by second element" << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it_pair = vecpairs.begin(); it_pair != vecpairs.end(); it_pair++)
-		std::cout << "[" << it_pair->first << " " << it_pair->second << "] ";
-	std::cout << std::endl;
-	////////////////////////
+	// ///////////////AFFICHAGE
+	// std::cout << "Sort Pairs by second element" << std::endl;
+	// for (std::vector<std::pair<int, int> >::iterator it_pair = vecpairs.begin(); it_pair != vecpairs.end(); it_pair++)
+	// 	std::cout << "[" << it_pair->first << " " << it_pair->second << "] ";
+	// std::cout << std::endl;
+	// ////////////////////////
+	// Mettre les valeurs min dans un vecteur et les valeurs max dans un autre
 	std::vector<int> tmp_MinVec;
 	std::vector<int> maxVec;
 	for (size_t i = 0; i < vecpairs.size(); i++){
@@ -94,18 +98,19 @@ void	PmergeMe::fordJohnsonSort(Container& container){
 	}
 	if (spare != -1)
 		tmp_MinVec.push_back(spare);
-	///////////////AFFICHAGE
-	std::cout << "Vector of MAX pair before" << std::endl;
-	for (std::vector<int>::iterator it = maxVec.begin(); it != maxVec.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-	////////////////////////
-	///////////////AFFICHAGE
-	std::cout << "Vector of MIN pair before" << std::endl;
-	for (std::vector<int>::iterator it = tmp_MinVec.begin(); it != tmp_MinVec.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-	////////////////////////
+	// ///////////////AFFICHAGE
+	// std::cout << "Vector of MAX pair before" << std::endl;
+	// for (std::vector<int>::iterator it = maxVec.begin(); it != maxVec.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
+	// ////////////////////////
+	// ///////////////AFFICHAGE
+	// std::cout << "Vector of MIN pair before" << std::endl;
+	// for (std::vector<int>::iterator it = tmp_MinVec.begin(); it != tmp_MinVec.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
+	// ////////////////////////
+	// Commencement du tri
 	if (tmp_MinVec.size() > 2){
 		merge(maxVec, tmp_MinVec[0], 0, 0);
 		merge(maxVec, tmp_MinVec[1], 0, 1);
@@ -114,7 +119,8 @@ void	PmergeMe::fordJohnsonSort(Container& container){
 		int	suite = 2;
 		int	lastsuite = 0;
 		int 	size_left = tmp_MinVec.size() - 2;
-		if (spare != -1){
+		// Quand la liste de nombres est paire
+		if (spare == -1){
 			while (1){
 				std::vector<int>::iterator end = begin;
 				std::vector<int>::iterator ite = begin;
@@ -137,17 +143,19 @@ void	PmergeMe::fordJohnsonSort(Container& container){
 				begin = ite;
 			}
 		}
+		// Quand la liste de nombres est impaire
 		else{
 			while (1){
 				std::vector<int>::iterator end = begin;
 				std::vector<int>::iterator ite = begin;
 				if (size_left <= nextsuite){
-					// end = begin + size_left - 1;
-					// for (; end != begin - 1; end--){
-					// 	merge(maxVec, *end, 0, search_maxIndex(maxVec, vecpairs, end));
-					// }
-					// merge(maxVec, *end, 0, maxVec.size());
-					// break ;
+					end = begin + size_left - 1;
+					merge(maxVec, *end, 0, maxVec.size());
+					end--;
+					for (; end != begin - 1; end--){
+						merge(maxVec, *end, 0, search_maxIndex(maxVec, vecpairs, end));
+					}
+					break ;
 				}
 				end = begin + nextsuite - 1;
 				ite = end + 1;
@@ -164,10 +172,9 @@ void	PmergeMe::fordJohnsonSort(Container& container){
 	}
 	container.clear();
 	container.insert(container.begin(), maxVec.begin(), maxVec.end());
-	std::cout << std::endl;
+	// std::cout << std::endl;
 }
 
-// Function to search the pair at index 'it' in 'vecpairs' and search its value in 'maxVec' and return its index in 'maxVec'
 int		PmergeMe::search_maxIndex(std::vector<int> &maxVec, std::vector<std::pair<int, int> > vecpairs, const std::vector<int>::iterator& it){
 	int	index = 0;
 	for (std::vector<std::pair<int, int> >::iterator it_pair = vecpairs.begin(); it_pair != vecpairs.end(); it_pair++){
@@ -183,7 +190,6 @@ int		PmergeMe::search_maxIndex(std::vector<int> &maxVec, std::vector<std::pair<i
 	return -1;
 }
 
-//Function template who take a container and a value and insert the value in the container by binary sort in recursive
 template <typename Container>
 void	PmergeMe::merge(Container& all, int value, int start, int end){
 	if (start == end){

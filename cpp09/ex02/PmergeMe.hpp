@@ -16,7 +16,10 @@ class	PmergeMe{
 		std::vector<int> parseInput(int argc, char** argv);
 
 		template <typename Container>
-		void fordJohnsonSort(Container& container);
+		void fordJohnsonSort_vec(Container& container);
+
+		template <typename Container>
+		void fordJohnsonSort_deq(Container& container);
 
 		template <typename Container>
 		void printContainer(const Container& container);
@@ -24,7 +27,11 @@ class	PmergeMe{
 		template <typename Container>
 		void	merge(Container& all, int value, int start, int end);
 
-		int	search_maxIndex(std::vector<int> &maxVec, std::vector<std::pair<int, int> > vecpairs, const std::vector<int>::iterator& it);		
+		template <typename Container>
+		int	search_maxIndex_vec(Container &maxVec, std::vector<std::pair<int, int> > vecpairs, const typename Container::iterator& it);
+
+		template <typename Container>
+		int	search_maxIndex_deq(Container &maxVec, std::deque<std::pair<int, int> > deqpairs, const typename Container::iterator& it);
 
 	public:
 		PmergeMe();

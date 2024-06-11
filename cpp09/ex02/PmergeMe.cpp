@@ -17,22 +17,25 @@ PmergeMe::~PmergeMe(){
 
 bool	check_arg(int argc, char** argv){
 	if (argc <= 2){
-		std::cerr << "Usage: ./PmergeMe <numbers>" << std::endl;
-		return 1;
+		std::cerr << "Usage: ./PmergeMe [numbers...]" << std::endl;
+		throw PmergeMe::invalidArgumentError();
 	}
 	for (int i = 1; i < argc; i++){
 		std::string str(argv[i]);
 		for (size_t j = 0; j < str.size(); j++){
-			if (!std::isdigit(str[j])){
-				std::cerr << "Error" << std::endl;
-				return 1;
-			}
+			if (!std::isdigit(str[j]))
+				throw PmergeMe::invalidArgumentError();
 		}
 		char	*end;
-        long	lim = std::strtol(str.c_str(), &end, 10);
-		if (lim > INT_MAX || lim < INT_MIN){
-			std::cerr << "Error" << std::endl;
-			return 1;
+		long	lim = std::strtol(str.c_str(), &end, 10);
+		if (lim > INT_MAX || lim < INT_MIN)
+			throw PmergeMe::invalidArgumentError();
+	}
+	//boucle pour checker si il y a des doublons dans les nombres
+	for (int i = 1; i < argc; i++){
+		for (int j = i + 1; j < argc; j++){
+			if (std::atoi(argv[i]) == std::atoi(argv[j]))
+				throw PmergeMe::duplicatesError();
 		}
 	}
 	return 0;
@@ -371,10 +374,10 @@ void	PmergeMe::processInput(int argc, char** argv){
 	printContainer(vecContainer);
 
 	double vecDuration = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1000.0;
-    double deqDuration = static_cast<double>(end_deq - start_deq) / CLOCKS_PER_SEC * 1000.0;
+	double deqDuration = static_cast<double>(end_deq - start_deq) / CLOCKS_PER_SEC * 1000.0;
 
 	std::cout << "Time to process a range of " << numbers.size()
-              << " elements with a vector: " << vecDuration << " us" << std::endl;
-    std::cout << "Time to process a range of " << numbers.size()
-              << " elements with a deque: " << deqDuration << " us" << std::endl;
+			<< " elements with a vector: " << vecDuration << " us" << std::endl;
+	std::cout << "Time to process a range of " << numbers.size()
+			<< " elements with a deque: " << deqDuration << " us" << std::endl;
 }

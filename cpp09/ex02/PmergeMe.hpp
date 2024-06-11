@@ -40,6 +40,22 @@ class	PmergeMe{
 		~PmergeMe();
 
 		void processInput(int argc, char** argv);
+		class invalidArgumentError : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("[Error]: invalid argument");
+				}
+		};
+		class duplicatesError : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("[Error]: duplicates are forbidden");
+				}
+		};
 };
 
 bool	check_arg(int argc, char** argv);
